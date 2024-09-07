@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,6 +8,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  mySnackBar(BuildContext context, String msg) {
+    return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(msg))
+    );
+  }
+
   final List<Map<String, dynamic>> cartItems = [
     {
       'title': 'Pullover',
@@ -120,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               )
                             ],
                           ),
+                          // Options menu
                           IconButton(
                             icon: const Icon(Icons.more_vert),
                             onPressed: () {},
@@ -160,14 +167,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       backgroundColor: Colors.red,
                     ),
                     onPressed: () {
-                      // Add checkout functionality here
+                      mySnackBar(context, 'Check out Successful');
                     },
                     child: const Text(
                       'CHECK OUT',
                       style: TextStyle(
-                          fontSize: 18,
+                        fontSize: 18,
                         color: Colors.white,
-
                       ),
                     ),
                   ),
@@ -179,5 +185,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
 }
